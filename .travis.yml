@@ -1,0 +1,31 @@
+branches:
+  only:
+  - master
+language: rust
+rust:
+  - nightly
+cache:
+  cargo: true
+  npm: true
+matrix:
+  include:
+    - os: linux # 14.04
+      dist: trusty
+before_install:
+  - rustup component add clippy-preview rustfmt-preview
+  - cargo install wasm-pack
+  - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+install:
+  - npm install
+script:
+  - cargo build --target wasm32-unknown-unknown
+  - cargo test
+  - wasm-pack build
+  - wasm-pack test
+  - npm test -- --ci --maxWorkers 2
+  - cargo clippy --all-targets --all-features -- -D warnings
+  - cargo fmt --all -- --check
+  - ./node_modules/.bin/prettier --list-different '**/*.js' '**/*.jsx' '**/*.ts' '**/*.tsx' '**/*.md'
+  - ./node_modules/.bin/tsc --noEmit
+  - ./node_modules/.bin/eslint --ext .ts --ext .js .
