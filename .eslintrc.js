@@ -1,4 +1,4 @@
-const typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/lib/configs/recommended.json');
+const typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended.json');
 const typescriptEslintPrettier = require('eslint-config-prettier/@typescript-eslint');
 
 module.exports = {
