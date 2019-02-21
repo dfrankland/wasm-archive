@@ -12,6 +12,7 @@ matrix:
     - os: linux # 14.04
       dist: trusty
 before_install:
+  - rustup target add wasm32-unknown-unknown
   - rustup component add clippy-preview rustfmt-preview
   - cargo install --force wasm-pack
   - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
