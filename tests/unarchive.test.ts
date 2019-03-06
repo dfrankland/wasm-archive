@@ -5,7 +5,7 @@ import { unarchive } from '../pkg/wasm_archive';
 
 const readFileAsync = promisify(readFile);
 
-describe('Unarchiver', () => {
+describe('unarchive', () => {
   it('unarchives zip files', async () => {
     const zipFile = await readFileAsync(
       resolvePath(__dirname, './fixtures.zip'),
