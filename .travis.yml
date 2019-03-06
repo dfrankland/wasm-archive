@@ -17,6 +17,7 @@ before_install:
   - cargo install --force wasm-pack
   - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
   - sudo apt-get install -y nodejs
+  - node -v
 install:
   - npm install
 script:
