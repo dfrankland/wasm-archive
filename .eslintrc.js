@@ -6,16 +6,19 @@ module.exports = {
     node: true,
   },
   parser: 'babel-eslint',
-  extends: ['airbnb-base', 'plugin:@typescript-eslint/recommended','prettier', 'prettier/@typescript-eslint'],
+  extends: [
+    'airbnb-base',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
+  ],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': 'error',
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: [
-          '.eslintrc.js',
-        ],
+        devDependencies: ['.eslintrc.js'],
       },
     ],
   },
@@ -35,7 +38,10 @@ module.exports = {
       // ],
       // ```
       plugins: ['@typescript-eslint', 'prettier'],
-      rules: Object.assign(typescriptEslintRecommended.rules, typescriptEslintPrettier.rules),
+      rules: Object.assign(
+        typescriptEslintRecommended.rules,
+        typescriptEslintPrettier.rules,
+      ),
       settings: {
         'import/resolver': {
           node: {
