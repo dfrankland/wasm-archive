@@ -12,12 +12,8 @@ matrix:
     - os: linux # 14.04
       dist: trusty
 before_install:
-  - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
-  - which node
-  - which nodejs
-  - sudo rm -f "$(which node)"
-  - sudo ln -s "$(which nodejs)" /bin/node
+  - nvm install --lts
+  - nvm use --lts
   - node -v
   - npm -v
   - rustup target add wasm32-unknown-unknown
