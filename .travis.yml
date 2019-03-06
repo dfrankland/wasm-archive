@@ -12,15 +12,17 @@ matrix:
     - os: linux # 14.04
       dist: trusty
 before_install:
+  - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - which node
+  - which nodejs
+  - sudo rm -f "$(which node)"
+  - sudo ln -s "$(which nodejs)" /bin/node
+  - node -v
+  - npm -v
   - rustup target add wasm32-unknown-unknown
   - rustup component add clippy-preview rustfmt-preview
   - cargo install --force wasm-pack
-  - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
-  - rm -f "$(which node)"
-  - ln -s "$(which nodejs)" /bin/node
-  - node -v
-  - npm -v
 install:
   - npm install
 script:
