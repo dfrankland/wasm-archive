@@ -14,7 +14,6 @@ module.exports = {
       'error',
       {
         devDependencies: [
-          'rollup.config.js',
           '.eslintrc.js',
         ],
       },
