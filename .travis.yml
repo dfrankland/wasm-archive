@@ -25,7 +25,7 @@ script:
   - cargo build --target wasm32-unknown-unknown
   - cargo test
   - wasm-pack build
-  - wasm-pack test
+  - wasm-pack test --node
   - npm test -- --ci --maxWorkers 2
   - cargo clippy --all-targets --all-features -- -D warnings
   - cargo fmt --all -- --check
