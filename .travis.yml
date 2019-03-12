@@ -17,8 +17,9 @@ before_install:
   - node -v
   - npm -v
   - rustup target add wasm32-unknown-unknown
-  - rustup component add clippy-preview rustfmt-preview
-  - cargo install --force wasm-pack
+  - rustup component add clippy || cargo install --git https://github.com/rust-lang/rust-clippy/ --force clippy
+  - rustup component add rustfmt || cargo install --git https://github.com/rust-lang/rustfmt/ --force rustfmt
+  - cargo install --force wasm-pack || cargo install --git https://github.com/rustwasm/wasm-pack/ --force wasm-pack
 install:
   - npm install
 script:
